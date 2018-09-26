@@ -1,0 +1,28 @@
+cmake_minimum_required(VERSION 3.8.2)
+set (CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
+include(cotire)
+include(qt_common)
+include(cmake/qt571.cmake)
+include(cmake/generate_demo.cmake)
+
+if (POLICY CMP0071)
+    cmake_policy(SET CMP0071 NEW)
+endif()
+
+include_directories(${CMAKE_SOURCE_DIR}/include)
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/lib)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/lib)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
+#set(CMAKE_BUILD_TYPE Release)
+include_directories(${PROJECT_SOURCE_DIR}/3rdparty)
+include_directories(${PROJECT_SOURCE_DIR}/3rdparty/CuteLogger/include)
+
+add_subdirectory(3rdparty/CuteLogger)
+
+#add_subdirectory(src/template)
+generate_demo("chart-01")
+generate_demo("chart-02")
+generate_demo("chart-03")
+generate_demo("chart-04")
+generate_demo("chart-05")
+generate_demo("chart-06")
